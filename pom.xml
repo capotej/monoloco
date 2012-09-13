@@ -17,7 +17,7 @@
   </distributionManagement>
 
   <scm>
-    <connection>scm:git:git@github.com:capotej/finatra.git</connection>
+    <connection>scm:git:git@github.com:capotej/monoloco.git</connection>
     <url>scm:git:git@github.com:capotej/monoloco.git</url>
     <developerConnection>scm:git:git@github.com:capotej/monoloco.git</developerConnection>
   </scm>
