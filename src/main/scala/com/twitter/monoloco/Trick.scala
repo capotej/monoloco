@@ -2,6 +2,7 @@ package com.twitter.monoloco
 
 import org.apache.commons.exec.CommandLine
 import org.apache.commons.exec.DefaultExecutor
+import java.util.concurrent.TimeUnit
 
 abstract class Trick extends Logging {
 
@@ -9,7 +10,7 @@ abstract class Trick extends Logging {
 
   def stop():String
 
-  def duration():Long
+  def duration():(Long, TimeUnit)
 
   def apply() {
     val startLine = CommandLine.parse(start())
@@ -18,7 +19,10 @@ abstract class Trick extends Logging {
     logger.info("starting %s for %d milliseconds", start(), duration())
     try {
       executor.execute(startLine)
-      Thread.sleep(duration())
+
+      val (time, unit) = duration()
+      unit.sleep(time)
+
       logger.info("stopping: %s", stop())
       executor.execute(stopLine)
     } catch {

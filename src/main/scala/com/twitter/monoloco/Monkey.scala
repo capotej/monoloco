@@ -1,10 +1,15 @@
 package com.twitter.monoloco
 
-abstract class Monkey extends Logging {
+abstract class Monkey extends Runnable with Logging {
+
+  @volatile var count = 0L
 
   //gets run every second
-  def execute() {
-    if(shouldRun()) apply()
+  final def run() = {
+     if (shouldRun()) {
+        apply()
+        count += 1L
+     }
   }
 
   //shouldRun
@@ -12,5 +17,7 @@ abstract class Monkey extends Logging {
 
   //gets run if shouldRun is true
   def apply()
+  
+  def executions() = count
 
 }

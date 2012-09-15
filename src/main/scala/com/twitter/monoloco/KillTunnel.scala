@@ -1,8 +1,10 @@
 package com.twitter.monoloco
 
+import java.util.concurrent.TimeUnit.MINUTES
+
 class KillTunnel extends Trick {
 
-  def duration() = 30000 * 4 //2 minutes
+  def duration() = (2L, MINUTES)
 
   def start() = {
     "monit stop autossh"
