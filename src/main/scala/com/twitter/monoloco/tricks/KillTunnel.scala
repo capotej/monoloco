@@ -8,13 +8,11 @@ class KillTunnel extends CommandTrick {
   def duration() = (2L, MINUTES)
 
   def start() = {
-    "echo start"
-    //"monit stop autossh"
+    "monit stop autossh"
   }
 
   def stop() = {
-    "echo stop"
-    //"monit start autossh"
+    "monit start autossh"
   }
 
 }
