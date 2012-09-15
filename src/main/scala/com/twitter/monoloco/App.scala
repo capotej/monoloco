@@ -1,9 +1,11 @@
 package com.twitter.monoloco
 
-import java.util.Timer
 import com.twitter.logging.{Logger, LoggerFactory, FileHandler}
 import com.twitter.logging.config._
 import scala.Some
+
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 object App extends Logging {
 
@@ -12,12 +14,18 @@ object App extends Logging {
     level = Some(Logger.INFO),
     handlers = List(logHandler))()
 
+  val executorService = Executors.newSingleThreadScheduledExecutor()
+
   def main(args: Array[String]) {
-    logger.info("starting monoloco")
+    logger.info("starting monoloco")    
 
     val monkey = DefaultMonkey
-    val timer = new Timer()
-    timer.schedule(new Worker(monkey), 0, 1000)
+
+    executorService.scheduleAtFixedRate(monkey,
+				        0,                // initial delay
+                                        1,                // time interval
+                                        TimeUnit.SECONDS) // time unit
+
   }
 
 }

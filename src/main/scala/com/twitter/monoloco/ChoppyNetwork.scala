@@ -1,8 +1,10 @@
 package com.twitter.monoloco
 
+import java.util.concurrent.TimeUnit.SECONDS
+
 class ChoppyNetwork extends Trick {
 
-  def duration() = 30000
+  def duration() = (3L, SECONDS)
 
   def start() = {
     "tc qdisc change dev eth0 root netem loss 0.3% 25%"
