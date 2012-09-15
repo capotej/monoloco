@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit.SECONDS
 
 class ChoppyNetwork extends Trick {
 
-  def duration() = (3L, SECONDS)
+  def duration() = (30L, SECONDS)
 
   def start() = {
     "tc qdisc change dev eth0 root netem loss 0.3% 25%"
