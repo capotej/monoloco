@@ -1,6 +1,7 @@
-package com.twitter.monoloco
+package com.twitter.monoloco.com.twitter.monoloco.tricks
 
 import java.util.concurrent.TimeUnit.SECONDS
+import com.twitter.monoloco.Trick
 
 class ChoppyNetwork extends Trick {
 

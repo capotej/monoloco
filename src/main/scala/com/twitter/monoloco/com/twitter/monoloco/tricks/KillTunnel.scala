@@ -1,6 +1,7 @@
-package com.twitter.monoloco
+package com.twitter.monoloco.com.twitter.monoloco.tricks
 
 import java.util.concurrent.TimeUnit.MINUTES
+import com.twitter.monoloco.Trick
 
 class KillTunnel extends Trick {
 

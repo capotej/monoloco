@@ -1,33 +1,23 @@
 package com.twitter.monoloco
 
-import org.apache.commons.exec.CommandLine
-import org.apache.commons.exec.DefaultExecutor
 import java.util.concurrent.TimeUnit
 
 abstract class Trick extends Logging {
 
-  def start():String
-
-  def stop():String
+  val (time, unit) = duration()
 
   def duration():(Long, TimeUnit)
 
-  def apply() {
-    val startLine = CommandLine.parse(start())
-    val stopLine = CommandLine.parse(stop())
-    val executor = new DefaultExecutor()
-    val (time, unit) = duration()
-    try {
-      logger.info("starting [%s] for %d %s", start(), time, unit)
-      executor.execute(startLine)
-
-      unit.sleep(time)
-
-      logger.info("stopping: %s", stop())
-      executor.execute(stopLine)
-    } catch {
-      case e:Exception => logger.error(e, "couldnt run cmd, aborting trick")
-    }
+  def sleepForDuration() {
+    unit.sleep(time)
   }
+
+  def apply() {
+    logger.info("starting: [%s] for %d %s", this, time, unit)
+    execute()
+    logger.info("stopping: [%s]", this)
+  }
+
+  def execute()
 
 }

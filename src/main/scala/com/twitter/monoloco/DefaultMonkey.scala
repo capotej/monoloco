@@ -1,5 +1,6 @@
 package com.twitter.monoloco
 
+import tricks.{KillCpu, KillTunnel}
 import util.Random
 
 object DefaultMonkey extends Monkey {
