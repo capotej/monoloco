@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit
 object App extends Logging {
 
   val logHandler = FileHandler(filename = "logs/monoloco.log", rollPolicy = Policy.Daily)
+
   val config = new LoggerFactory(node = "monoloco",
     level = Some(Logger.INFO),
     handlers = List(logHandler))()
@@ -20,11 +21,10 @@ object App extends Logging {
     logger.info("starting monoloco")    
 
     val monkey = DefaultMonkey
+    val initialDelay = 0
+    val timeInterval = 1
 
-    executorService.scheduleAtFixedRate(monkey,
-				        0,                // initial delay
-                                        1,                // time interval
-                                        TimeUnit.SECONDS) // time unit
+    executorService.scheduleAtFixedRate(monkey, initialDelay, timeInterval, TimeUnit.SECONDS)
 
   }
 
