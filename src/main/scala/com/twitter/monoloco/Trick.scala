@@ -16,11 +16,11 @@ abstract class Trick extends Logging {
     val startLine = CommandLine.parse(start())
     val stopLine = CommandLine.parse(stop())
     val executor = new DefaultExecutor()
-    logger.info("starting %s for %d milliseconds", start(), duration())
+    val (time, unit) = duration()
     try {
+      logger.info("starting [%s] for %d %s", start(), time, unit)
       executor.execute(startLine)
 
-      val (time, unit) = duration()
       unit.sleep(time)
 
       logger.info("stopping: %s", stop())
