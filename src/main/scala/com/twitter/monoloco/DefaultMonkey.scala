@@ -4,7 +4,7 @@ import util.Random
 
 class DefaultMonkey(val tricks: List[Trick]) extends Monkey {
 
-  require(!tricks.isEmpty, "Trick collection cannot be empty")
+  require(!tricks.isEmpty, "Trick List cannot be empty")
 
   def shouldRun() = {
     val rand = new Random(System.currentTimeMillis())
