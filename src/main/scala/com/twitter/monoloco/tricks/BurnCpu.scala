@@ -40,7 +40,6 @@ class BurnCpu extends CodeTrick {
 
   def stop() {
     pool.shutdownNow()
-    logger.info("done it")
   }
 
 
