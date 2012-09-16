@@ -1,4 +1,4 @@
-# Mono Loco
+# Mono Loco ![Build Status](https://secure.travis-ci.org/capotej/monoloco.png)
 
 ### Description
 An chaos monkey implementation
