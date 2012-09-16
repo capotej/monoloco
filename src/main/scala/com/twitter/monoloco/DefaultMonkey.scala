@@ -1,9 +1,10 @@
 package com.twitter.monoloco
 
-import tricks.{BurnCpu, KillTunnel}
 import util.Random
 
-class DefaultMonkey(tricks: List[Trick]) extends Monkey {
+class DefaultMonkey(val tricks: List[Trick]) extends Monkey {
+
+  require(!tricks.isEmpty, "Trick collection cannot be empty")
 
   def shouldRun() = {
     val rand = new Random(System.currentTimeMillis())
