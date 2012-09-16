@@ -1,13 +1,13 @@
 package com.twitter.monoloco
 
-import tricks.{KillCpu, KillTunnel}
+import tricks.{BurnCpu, KillTunnel}
 import util.Random
 
 class DefaultMonkey(tricks: List[Trick]) extends Monkey {
 
   def shouldRun() = {
     val rand = new Random(System.currentTimeMillis())
-    val res = rand.nextInt(50) == 5
+    val res = rand.nextInt(200) == 5
     if (res) logger.info("monkey is pissed!")
     res
   }

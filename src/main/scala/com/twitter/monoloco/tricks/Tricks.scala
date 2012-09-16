@@ -5,7 +5,7 @@ import com.twitter.monoloco.Trick
 object Tricks {
 
   def apply() = {
-    List[Trick](new KillTunnel)
+    List[Trick](new BurnCpu)
   }
 
 }

@@ -8,6 +8,8 @@ import scala.Some
 
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import sun.misc.Signal
+import com.twitter.util.SignalHandler
 
 object App extends Logging {
 
@@ -22,11 +24,10 @@ object App extends Logging {
   val executorService = Executors.newSingleThreadScheduledExecutor()
 
   def main(args: Array[String]) {
-    logger.info("starting monoloco")    
+    logger.info("starting monoloco")
     val initialDelay = 0
     val timeInterval = 1
     executorService.scheduleAtFixedRate(monkey, initialDelay, timeInterval, TimeUnit.SECONDS)
-
   }
 
 }
